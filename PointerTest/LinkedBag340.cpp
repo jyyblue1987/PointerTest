@@ -11,41 +11,53 @@
 
 template<typename ItemType>
 bool LinkedBag<ItemType>::removeSecondNode340()
-{
+{	
+	if (itemCount < 2)
+		return false;
+
 	Node<ItemType>* ptr = headPtr;
-	Node<ItemType>* secondPtr = nullptr;
-	int count = 0;
+	Node<ItemType>* secondPtr = headPtr->getNext();
+	
+	secondPtr->setItem(headPtr->getItem());
+	Node<ItemType>* nodeToDeletePtr = headPtr;
 
-	while (ptr != nullptr) {
-		if (count == 1)
-		{
-			secondPtr = ptr;
-			break;
-		}
-		ptr = ptr->getNext();
-		count++;
-	}
+	headPtr = secondPtr;
 
-	bool canRemoveItem = !isEmpty() && (secondPtr != nullptr);
+	nodeToDeletePtr->setNext(nullptr);
+	delete nodeToDeletePtr;
+	nodeToDeletePtr = nullptr;
 
-	if (canRemoveItem) {
-		secondPtr->setItem(headPtr->getItem());
-		Node<ItemType>* nodeToDeletePtr = headPtr;
-		headPtr = headPtr->getNext();
-
-		nodeToDeletePtr->setNext(nullptr);
-		delete nodeToDeletePtr;
-		nodeToDeletePtr = nullptr;
-
-		itemCount--;
-	}
-
-	return canRemoveItem;
+	itemCount--;
+	
+	return true;
 }
 
 template<typename ItemType>
-bool LinkedBag<ItemType>::addEnd340(const ItemType&)
+bool LinkedBag<ItemType>::addEnd340(const ItemType&newEntry)
 {
+	Node<ItemType>* nextNodePtr = new Node<ItemType>();
+	nextNodePtr->setItem(newEntry);
+	nextNodePtr->setNext(nullptr);
+
+	if (isEmpty())
+	{			
+		headPtr = nextNodePtr;
+	}
+	else
+	{
+		Node<ItemType>* ptr = headPtr;
+		
+		// find last element
+		while (ptr->getNext() != nullptr) {
+			ptr = ptr->getNext();		
+		}
+
+		// set next ptr for last element
+		ptr->setNext(nextNodePtr);
+	}
+
+	itemCount++;
+
 	return true;
 }
 
