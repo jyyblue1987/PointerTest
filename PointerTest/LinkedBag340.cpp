@@ -128,7 +128,25 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& anEn
 template<typename ItemType>
 ItemType LinkedBag<ItemType>::removeRandom340()
 {
-	return ItemType();
+	if (itemCount < 1)
+		return ItemType();
+
+	int index = rand() % itemCount;
+	Node<ItemType> *ptr = headPtr;
+	int count = 0;
+	while (ptr != nullptr) {
+		if (count == index)
+			break;
+		
+		ptr = ptr->getNext();
+		count++;
+	}
+
+	ItemType item = ptr->getItem();
+
+	remove(item);
+
+	return item;
 }
 
 template<typename ItemType>
