@@ -65,19 +65,38 @@ bool LinkedBag<ItemType>::addEnd340(const ItemType&newEntry)
 template<typename ItemType>
 int LinkedBag<ItemType>::getCurrentSize340Iterative() const
 {
-	return -1;
+	Node<ItemType>* ptr = headPtr;
+
+	int count = 0;
+
+	while (ptr != nullptr) {
+		ptr = ptr->getNext();
+		count++;
+	}
+
+	return count;
 }
 
 template<typename ItemType>
 int LinkedBag<ItemType>::getCurrentSize340Recursive() const
 {
-	return -1;
+	return getCurrentSize340RecursiveHelper(headPtr);
 }
 
 template<typename ItemType>
 int LinkedBag<ItemType>::getCurrentSize340RecursiveNoHelper() const
 {
-	return -1;
+	static Node<ItemType> *head_ptr = headPtr;
+
+	if (head_ptr == nullptr)
+		return 0;
+
+	head_ptr = head_ptr->getNext();
+	int result = 1 + getCurrentSize340RecursiveNoHelper();
+
+	head_ptr = headPtr;
+
+	return result;
 }
 
 template<typename ItemType>
@@ -99,9 +118,12 @@ ItemType LinkedBag<ItemType>::removeRandom340()
 }
 
 template<typename ItemType>
-int LinkedBag<ItemType>::getCurrentSize340RecursiveHelper(Node<ItemType>*) const // if needed
+int LinkedBag<ItemType>::getCurrentSize340RecursiveHelper(Node<ItemType>* node) const // if needed
 {
-	return -1;
+	if (node == nullptr)
+		return 0;
+
+	return 1 + getCurrentSize340RecursiveHelper(node->getNext());	
 }
 
 template<typename ItemType>
