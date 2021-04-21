@@ -101,16 +101,10 @@ bool LinkedBag<ItemType>::remove(const ItemType& anEntry) {
 }
 
 template<typename ItemType>
-void LinkedBag<ItemType>::clear() {
-	Node<ItemType>* nodeToDeletePtr = headPtr;
-
-	while (headPtr != nullptr) {
-		headPtr = headPtr->getNext();
-		nodeToDeletePtr->setNext(nullptr);
-		delete nodeToDeletePtr;
-		nodeToDeletePtr = headPtr;
-	}
-
+void LinkedBag<ItemType>::clear() {	 
+	shared_ptr<Node<ItemType>> ptr(headPtr);
+	
+	headPtr = nullptr;
 	itemCount = 0;
 } 
 
