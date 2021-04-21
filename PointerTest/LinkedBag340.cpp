@@ -15,7 +15,6 @@ bool LinkedBag<ItemType>::removeSecondNode340()
 	if (itemCount < 2)
 		return false;
 
-	Node<ItemType>* ptr = headPtr;
 	Node<ItemType>* secondPtr = headPtr->getNext();
 	
 	secondPtr->setItem(headPtr->getItem());
