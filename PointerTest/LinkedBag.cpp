@@ -46,6 +46,7 @@ LinkedBag<ItemType>::LinkedBag(const LinkedBag<ItemType>& aBag) {
 
 template<typename ItemType>
 LinkedBag<ItemType>::~LinkedBag() {
+	cout << endl << "LinkedBag Instance is destroyed" << endl;
 	clear();
 } 
 
@@ -103,6 +104,13 @@ bool LinkedBag<ItemType>::remove(const ItemType& anEntry) {
 template<typename ItemType>
 void LinkedBag<ItemType>::clear() {	 
 	shared_ptr<Node<ItemType>> ptr(headPtr);
+
+	while (ptr != nullptr)
+	{
+		shared_ptr<Node<ItemType>> next(ptr->getNext());
+		ptr = next;
+	}
+
 	
 	headPtr = nullptr;
 	itemCount = 0;

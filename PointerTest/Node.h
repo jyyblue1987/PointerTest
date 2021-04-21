@@ -17,6 +17,8 @@ public:
 	Node();
 	Node(const ItemType&);
 	Node(const ItemType&, Node<ItemType>*);
+	~Node();
+
 	void setItem(const ItemType&);
 	void setNext(Node<ItemType>*);
 	ItemType getItem() const;

@@ -21,6 +21,13 @@ template<typename ItemType>
 Node<ItemType>::Node(const ItemType& anItem, Node<ItemType>* nextNodePtr) :
 	item(anItem), next(nextNodePtr) {} 
 
+
+template<typename ItemType>
+Node<ItemType>::~Node() {
+	cout << endl << "Node " << item << " Instance is destroyed" << endl;	
+}
+
+
 template<typename ItemType>
 void Node<ItemType>::setItem(const ItemType& anItem) {
 	item = anItem;

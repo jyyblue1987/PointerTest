@@ -116,9 +116,9 @@ int main() {
 	cout << "\n !removeRandom340() ---> " << bag->removeRandom340();
 	cout << "\n !removeRandom340() ---> " << bag->removeRandom340();
 	displayBag(bag);
-	cout << "\n !removeRandom340() ---> " << bag->removeRandom340();
-	cout << "\n !removeRandom340() ---> " << bag->removeRandom340();
-	displayBag(bag);
+	//cout << "\n !removeRandom340() ---> " << bag->removeRandom340();
+	//cout << "\n !removeRandom340() ---> " << bag->removeRandom340();
+	//displayBag(bag);
 
 	cout << endl;
 	return 0;
