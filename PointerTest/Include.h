@@ -6,7 +6,8 @@
 #include <memory>
 #include <ostream>
 #include <string>
-#include "LinkedBag.h"
 
 using namespace std;
 
+#include "LinkedBag.cpp"
+#include "LinkedBag340.cpp"

@@ -7,7 +7,7 @@
 ===>					<===
 */
 
-#include "Include.h"
+#include "LinkedBag.h"
 
 template<typename ItemType>
 bool LinkedBag<ItemType>::removeSecondNode340()
