@@ -165,3 +165,30 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveHelper(Node<ItemType>* curPtr
 
 	return count + getFrequencyOf340RecursiveHelper(curPtr->getNext(), anEntry);
 }
+
+
+template<typename ItemType>
+void LinkedBag<ItemType>::selectionSort()
+{
+	Node<ItemType>* temp = headPtr;
+
+	// Traverse the List
+	while (temp) {
+		Node<ItemType>* min = temp;
+		Node<ItemType>* r = temp->getNext();
+
+		// Traverse the unsorted sublist
+		while (r) {
+			if (min->getItem() > r->getItem())
+				min = r;
+
+			r = r->getNext();
+		}
+
+		// Swap Data
+		ItemType x = temp->getItem();
+		temp->setItem(min->getItem());
+		min->setItem(x);
+		temp = temp->getNext();
+	}
+}

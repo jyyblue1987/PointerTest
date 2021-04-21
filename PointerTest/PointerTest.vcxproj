@@ -118,8 +118,8 @@
   <ItemGroup>
     <ClCompile Include="LinkedBag.cpp" />
     <ClCompile Include="LinkedBag340.cpp" />
-    <ClCompile Include="LinkedBagClient340.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="PartD.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />

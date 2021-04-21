@@ -43,6 +43,7 @@ public:
 	bool contains(const ItemType&) const;
 	int getFrequencyOf(const ItemType&) const;
 	std::vector<ItemType> toVector() const;
+	void selectionSort();
 
 private:
 	Node<ItemType>* headPtr{ nullptr }; // Pointer to first node
