@@ -100,15 +100,29 @@ int LinkedBag<ItemType>::getCurrentSize340RecursiveNoHelper() const
 }
 
 template<typename ItemType>
-int LinkedBag<ItemType>::getFrequencyOf340Recursive(const ItemType&) const
+int LinkedBag<ItemType>::getFrequencyOf340Recursive(const ItemType& anEntry) const
 {
-	return -1;
+	return getFrequencyOf340RecursiveHelper(headPtr, anEntry);
 }
 
 template<typename ItemType>
-int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType&) const
+int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& anEntry) const
 {
-	return -1;
+	static Node<ItemType> *head_ptr1 = headPtr;
+
+	if (head_ptr1 == nullptr)
+		return 0;
+
+	int count = 0;
+	if (anEntry == head_ptr1->getItem())
+		count = 1;
+
+	head_ptr1 = head_ptr1->getNext();
+	int result = count + getFrequencyOf340RecursiveNoHelper(anEntry);
+
+	head_ptr1 = headPtr;
+
+	return result;	
 }
 
 template<typename ItemType>
@@ -127,7 +141,14 @@ int LinkedBag<ItemType>::getCurrentSize340RecursiveHelper(Node<ItemType>* node) 
 }
 
 template<typename ItemType>
-int LinkedBag<ItemType>::getFrequencyOf340RecursiveHelper(Node<ItemType>*, const ItemType&) const // if needed
+int LinkedBag<ItemType>::getFrequencyOf340RecursiveHelper(Node<ItemType>* curPtr, const ItemType& anEntry) const // if needed
 {
-	return -1;
+	if (curPtr == nullptr)
+		return 0;
+
+	int count = 0;
+	if (anEntry == curPtr->getItem())
+		count = 1;
+
+	return count + getFrequencyOf340RecursiveHelper(curPtr->getNext(), anEntry);
 }
