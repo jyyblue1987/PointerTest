@@ -1,5 +1,12 @@
 #include "Include.h"
 
+// Selection Sort Algorithm: 
+// Iterate the given list N times where N is the number of elements in the list. 
+// In every iteration of selection sort, 
+// the minimum element (considering ascending order) from the unsorted subarray 
+// is picked and moved to the sorted subarray.
+// Sorting is the meaningful task because in many situation, sorting is required.
+
 void displayBag(const unique_ptr<LinkedBag<int>>&);
 
 
