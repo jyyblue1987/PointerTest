@@ -32,13 +32,13 @@
     <ClCompile Include="LinkedBag.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LinkedBag340.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LinkedBagClient340.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedBag340.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

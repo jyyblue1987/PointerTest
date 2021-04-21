@@ -12,7 +12,35 @@
 template<typename ItemType>
 bool LinkedBag<ItemType>::removeSecondNode340()
 {
-	return true;
+	Node<ItemType>* ptr = headPtr;
+	Node<ItemType>* secondPtr = nullptr;
+	int count = 0;
+
+	while (ptr != nullptr) {
+		if (count == 1)
+		{
+			secondPtr = ptr;
+			break;
+		}
+		ptr = ptr->getNext();
+		count++;
+	}
+
+	bool canRemoveItem = !isEmpty() && (secondPtr != nullptr);
+
+	if (canRemoveItem) {
+		secondPtr->setItem(headPtr->getItem());
+		Node<ItemType>* nodeToDeletePtr = headPtr;
+		headPtr = headPtr->getNext();
+
+		nodeToDeletePtr->setNext(nullptr);
+		delete nodeToDeletePtr;
+		nodeToDeletePtr = nullptr;
+
+		itemCount--;
+	}
+
+	return canRemoveItem;
 }
 
 template<typename ItemType>
