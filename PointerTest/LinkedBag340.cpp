@@ -18,13 +18,9 @@ bool LinkedBag<ItemType>::removeSecondNode340()
 	Node<ItemType>* secondPtr = headPtr->getNext();
 	
 	secondPtr->setItem(headPtr->getItem());
-	Node<ItemType>* nodeToDeletePtr = headPtr;
+	shared_ptr<Node<ItemType>> nodeToDeletePtr(headPtr);
 
 	headPtr = secondPtr;
-
-	nodeToDeletePtr->setNext(nullptr);
-	delete nodeToDeletePtr;
-	nodeToDeletePtr = nullptr;
 
 	itemCount--;
 	
