@@ -91,12 +91,8 @@ bool LinkedBag<ItemType>::remove(const ItemType& anEntry) {
 
 	if (canRemoveItem) {
 		entryNodePtr->setItem(headPtr->getItem());
-		Node<ItemType>* nodeToDeletePtr = headPtr;
+		shared_ptr<Node<ItemType>> nodeToDeletePtr(headPtr);
 		headPtr = headPtr->getNext();
-
-		nodeToDeletePtr->setNext(nullptr);
-		delete nodeToDeletePtr;
-		nodeToDeletePtr = nullptr;
 
 		itemCount--;
 	}
